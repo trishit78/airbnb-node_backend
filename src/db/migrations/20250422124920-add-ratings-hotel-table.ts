@@ -14,8 +14,6 @@ module.exports = {
       alter table hotels
       drop column ratings,
       drop column rating_count
-      
       `)
-
   }
 };

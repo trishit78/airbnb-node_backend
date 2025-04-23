@@ -18,3 +18,5 @@ module.exports = {
       `);
   }
 };
+
+// rule on the database layer is written here in migrations
