@@ -33,3 +33,15 @@ module.exports = {
 7. revert back to the previous migration
     npx sequelize-cli db:migrate:undo
 
+
+
+
+
+api flow
+
+1. router -> hotel.router.ts
+2. validation -> hotel.validator.ts
+3. controller -> handler -> hotel.controller.ts
+4. service -> hotel.service.ts
+5. repository -> hotel.repository.ts
+6. models -> hotel.ts
