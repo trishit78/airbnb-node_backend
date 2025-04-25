@@ -1,3 +1,4 @@
+
 import logger from "../config/logger.config";
 
 import Hotel from "../db/models/hotel";
@@ -17,6 +18,33 @@ export async function createHotel(hotelData:createHotelDTO) {
     return hotel;
 }
 
+export async function getAllHotels(){
+    const hotel = await Hotel.findAll();
+
+    if(!hotel){
+       logger.error('No Hotels found');
+        throw new Error('no hotels found')
+    }
+    logger.info(`Number of hotels: ${hotel.length}`);
+    
+    return hotel;
+}
+
+// export async function deleteHotelById(id:Number){
+//     const hotel = await Hotel.findByPk(id);
+
+// }
+
+
+
+// export async function updateHotel(id:Number,hotelData:createHotelDTO) {
+//     const hotel = await Hotel.findByPk(id);
+
+// } 
+
+
+
+
 export async function getHotelById(id:number){
     const hotel = await Hotel.findByPk(id);
     if(!hotel){
@@ -26,3 +54,5 @@ export async function getHotelById(id:number){
     logger.info(`Hotel found: ${hotel.id}`);
     return hotel;
 }
+
+
