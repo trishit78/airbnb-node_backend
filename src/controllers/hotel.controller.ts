@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { createHotelService,  getAllHotelsService,  getHotelByIdService } from "../services/hotel.service";
+import { createHotelService,  deleteHotelByIdService,  getAllHotelsService,  getHotelByIdService, updateHotelService } from "../services/hotel.service";
 import { StatusCodes } from "http-status-codes";
 
 export async function createHotelHandler(req:Request, res:Response, next:NextFunction) {
@@ -37,23 +37,23 @@ export async function getAllHotelsHandler(req:Request,res:Response,next:NextFunc
     })
 }
 
-// export async function deleteHotelHandler(req:Request,res:Response,next:NextFunction) {
-//     const hotel = await deleteHotelByIdService(Number(req.params.id));
-//     res.status(200).json({
-//         message:"delete a hotel by id",
-//         data:hotel,
-//         success:true
-//     });
-// }
+export async function deleteHotelHandler(req:Request,res:Response,next:NextFunction) {
+    const hotel = await deleteHotelByIdService(Number(req.params.id));
+    res.status(200).json({
+        message:"delete a hotel by id",
+        data:hotel,
+        success:true
+    });
+}
 
-// export async function updateHotelHandler(req:Request,res:Response,next:NextFunction) {
-//     const {id} =req.params;
-//     const hotelData = req.body;
+export async function updateHotelHandler(req:Request,res:Response,next:NextFunction) {
+    
+    const hotelData = req.body;
 
-//     const hotel= await updateHotelService(id,hotelData);
-//     res.status(200).json({
-//         message:"updated hotel on a id",
-//         data:hotel,
-//         success:true
-//     })
-// }
+    const hotel= await updateHotelService(Number(req.params.id),hotelData);
+    res.status(200).json({
+        message:"updated hotel on a id",
+        data:hotel,
+        success:true
+    })
+}
